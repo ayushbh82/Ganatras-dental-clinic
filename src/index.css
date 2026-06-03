@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    background-color: #F4F7FA !important;
+    color: #111111;
+    font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Theme definitions matching Sleek Interface */
+.bg-navy { 
+  background-color: #0A2540 !important; 
+} 
+.text-navy { 
+  color: #0A2540 !important; 
+} 
+.bg-primary-blue { 
+  background-color: #007BFF !important; 
+} 
+.text-primary-blue { 
+  color: #007BFF !important; 
+} 
+
+.glass { 
+  background: rgba(255, 255, 255, 0.85) !important; 
+  backdrop-filter: blur(10px) !important; 
+  border: 1px solid rgba(255, 255, 255, 0.2) !important; 
+} 
+
+.card-shadow { 
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important; 
+} 
+
+.service-card:hover { 
+  transform: translateY(-2px); 
+  transition: all 0.3s ease; 
+}

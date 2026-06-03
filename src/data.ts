@@ -1,0 +1,355 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import { Treatment, Doctor, Review, GalleryItem, WhyChooseUsCard } from './types';
+
+export const CLINIC_INFO = {
+  name: 'Ganatras Dental Care',
+  tagline: 'Creating Healthy & Confident Smiles Since Day One',
+  address: 'Ocean View CHS, 19, Hill Rd, near Mehboob Studio, Ranwar, Bandra West, Mumbai, Maharashtra 400050',
+  phone: '+91 98674 40803',
+  phoneDisplay: '+91 98674 40803',
+  email: 'info@ganatrasdentalcare.com',
+  rating: 5.0,
+  reviewsCount: 723,
+  hours: {
+    weekdays: '10:00 AM - 1:30 PM, 5:00 PM - 8:30 PM',
+    saturday: '10:00 AM - 2:00 PM',
+    sunday: 'Closed',
+  },
+  whatsapp: '919867440803', // country code + number without plus sign
+};
+
+export const IMAGES = {
+  hero: '/src/assets/images/clinic_hero_png_1780496951422.png',
+  drMale: '/src/assets/images/dentist_male_png_1780496966667.png',
+  drFemale: '/src/assets/images/dentist_female_png_1780496983862.png',
+  treatmentRoom: '/src/assets/images/treatment_room_png_1780496998329.png',
+  reception: '/src/assets/images/clinic_reception_png_1780497012675.png',
+};
+
+export const TREATMENTS: Treatment[] = [
+  {
+    id: 'implants',
+    name: 'Dental Implants',
+    description: 'Permanent, life-like restorations that look, feel, and function like healthy natural teeth.',
+    longDescription: 'Restore your self-confidence with advanced dental implantology. Our precision dental implants replace missing teeth with medical-grade titanium roots and handcrafted zirconia crowns, ensuring a highly durable, aesthetic, and functional smile.',
+    iconName: 'ShieldAlert', // Fallback, we will map them elegantly with custom medical-grade icon rendering
+    image: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=800&q=80',
+    features: ['German-designed high-fidelity titanium', 'Lifetime structural guarantee', 'Painless computer-guided placement', 'Immediate load capability available'],
+    duration: '1 - 2 hours per implant',
+    recovery: 'Minimal discomfort, normal routine within 24-48 hours',
+  },
+  {
+    id: 'rootcanal',
+    name: 'Root Canal Treatment',
+    description: 'Painless microscopic root canal treatments to save infected or severely decayed teeth.',
+    longDescription: 'Save your natural teeth with our painless, state-of-the-art Single-Visit Root Canal Treatment. Using high-recession rotary equipment and electronic apex locators, we eliminate infection while maintaining absolute patient comfort.',
+    iconName: 'Activity',
+    image: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80',
+    features: ['Quick single-visit sessions', 'Microscopic cleaning accuracy', 'Virtually painless localized anesthesia', 'Preserves natural jawbone structure'],
+    duration: '45 - 60 minutes',
+    recovery: 'Immediate pain relief, mild chew-sensitivity for 2 days',
+  },
+  {
+    id: 'whitening',
+    name: 'Teeth Whitening',
+    description: 'Professional-grade clinically safe whitening systems for a dazzling, pearly white smile.',
+    longDescription: 'Brighten your smile by up to 8 shades in less than an hour! Our advanced, clinically tested laser teeth whitening breaks down yellowing agents safely without damaging tooth enamel or compromising tooth sensitivity.',
+    iconName: 'Sparkles',
+    image: 'https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=800&q=80',
+    features: ['Up to 8 shades whiter in 45 min', 'Safe sensitivity-shielding agents', 'Custom take-home maintenance kit included', 'Instant aesthetic transformation'],
+    duration: '45 mins',
+    recovery: 'Instant results, avoid highly staining foods for 48 hours',
+  },
+  {
+    id: 'makeover',
+    name: 'Smile Makeovers',
+    description: 'Customized artistic treatments combining veneers, bonding, and contouring for your dream smile.',
+    longDescription: 'Unlock a Hollywood-grade radiant smile! By combining facial harmony metrics, cosmetic dentistry techniques, and custom digital smile design, we correct gaps, chips, and asymmetry to produce your ideal golden-ratio smile.',
+    iconName: 'Crown',
+    image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80',
+    features: ['Bespoke 3D Smile Preview before starting', 'Corrects alignment, color, gaps & chips', 'Digital facial alignment analysis', 'Premium artistry by Dr. Ganatra'],
+    duration: '2 - 3 visits',
+    recovery: 'Vaporizes alignment issues with instant confidence boost',
+  },
+  {
+    id: 'veneers',
+    name: 'Dental Veneers',
+    description: 'Ultra-thin, custom-crafted laminate porcelain shells designed to give teeth a flawless front look.',
+    longDescription: 'Get a perfect, red-carpet ready smile using premium glass-ceramic or ultra-sleek porcelain dental veneers. These durable shells fit snugly over your teeth, correcting gaps, severe discoloration, or misshapen structures.',
+    iconName: 'Layers',
+    image: 'https://images.unsplash.com/photo-1513223792601-592a9809eed4?auto=format&fit=crop&w=800&q=80',
+    features: ['Handcrafted ultra-thin medical porcelain', 'Natural translucency and shade match', 'Highly stain-resistant surface', 'Lasts up to 15-20 years with care'],
+    duration: '2 visits (1 week apart)',
+    recovery: 'Zero downtime, dynamic smile shift',
+  },
+  {
+    id: 'aligners',
+    name: 'Invisible Aligners',
+    description: 'Sleek, transparent removable trays that slide teeth into perfect positioning without metal.',
+    longDescription: 'Straighten your misaligned teeth discreetly! Clear dental aligners are customized invisible trays that bring your teeth into perfect alignment without the discomfort, restrictions, or unsightly wires of metallic braces.',
+    iconName: 'EyeOff',
+    image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80',
+    features: ['100% invisible structure', 'Removable to eat your favorite Mumbai street food', '3D digitized computer-planned movement', 'Shorter treatment timeline than braces'],
+    duration: '6 - 12 months overview',
+    recovery: 'Slight initial pressure with each new set of aligners',
+  },
+  {
+    id: 'braces',
+    name: 'Braces Treatment',
+    description: 'Traditional metal, ceramic, and self-ligating braces systems to align teeth and correct bites.',
+    longDescription: 'High-precision orthodontic therapy to correct crowded teeth, complex crossbites, and deep overbites. We offer highly structural ceramic, self-ligating, or classic orthodontic steel brackets for patients of all ages.',
+    iconName: 'Grid',
+    image: 'https://images.unsplash.com/photo-1513223792601-592a9809eed4?auto=format&fit=crop&w=800&q=80',
+    features: ['Corrects complex jaw & bite alignments', 'Choice of invisible ceramic brackets', 'Customized treatment mechanics', 'Improves digestive health and pronunciation'],
+    duration: '12 - 18 months',
+    recovery: 'Adjustments every 4-6 weeks, adaptive soft food for 3 days after adjustments',
+  },
+  {
+    id: 'kids',
+    name: 'Kids Dentistry',
+    description: 'Friendly, warm pediatric care for healthy teeth development in a fun, fear-free clinic space.',
+    longDescription: 'Protect your child’s dental milestones! Our welcoming pediatric professionals specialize in painless preventive sealants, cavity protection, and general habit guidance, ensuring young patients associate dentist visits with absolute joy.',
+    iconName: 'Smile',
+    image: 'https://images.unsplash.com/photo-1597762117709-644db876a917?auto=format&fit=crop&w=800&q=80',
+    features: ['Fear-reducing friendly ambiance', 'Fluoride shielding & sealants', 'Habit breaking therapy (thumb sucking, etc.)', 'Playful approach for toddler patience'],
+    duration: '30 - 45 mins',
+    recovery: 'Zero recovery, children receive healthy-habit gift packs',
+  },
+  {
+    id: 'extraction',
+    name: 'Tooth Extraction',
+    description: 'Safe, completely painless tooth removal including impacted wisdom teeth surgery.',
+    longDescription: 'No-fear, traumatic surgical removals. Utilizing localized numbing agents, we perform standard and surgical extractions (such as impacted wisdom teeth) safely with focus on preserving bone integrity and ensuring quick recovery.',
+    iconName: 'Scissors',
+    image: 'https://images.unsplash.com/photo-1468495244123-6c6c332eeece?auto=format&fit=crop&w=800&q=80',
+    features: ['Surgical surgical precision', 'Safe removal of painful wisdom teeth', 'Advanced fast-healing PRF membrane technique', 'Absolute sedation option for anxious patients'],
+    duration: '20 - 45 mins',
+    recovery: 'Suture healing in 3-5 days, liquid-soft cold diet for 24 hours',
+  },
+  {
+    id: 'crowns',
+    name: 'Dental Crowns & Bridges',
+    description: 'Premium restorative CAD/CAM crowns and multi-unit bridges to restore biting power and strength.',
+    longDescription: 'Reinforce cracked or root-canal treated teeth with CAD/CAM crowns. Our master-ceramicists produce highly protective, realistic bridges that fill gaps, restoring both smile aesthetics and robust chewing power.',
+    iconName: 'HardHat',
+    image: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=800&q=80',
+    features: ['High-precision scan-to-mill CAD/CAM technology', 'High-strength metal-free crowns (Zirconia / E.Max)', 'Natural contours for perfect chewing bite', 'Restores continuous beautiful tooth row'],
+    duration: '2 appointments',
+    recovery: 'Zero downtime, immediate comfort improvement',
+  },
+];
+
+export const DOCTORS: Doctor[] = [
+  {
+    id: 'dr_ganatra',
+    name: 'Dr. Ganatra',
+    title: 'Senior Cosmetic & Implant Dentist',
+    qualification: 'MDS (Prosthodontics & Crown-Bridge), BDS',
+    experience: '22+ Years of Clinical Excellence',
+    specialization: 'Cosmetic Makeovers, Full-Mouth Implants, and Advanced Prosthetic Reconstruction.',
+    about: 'Dr. Ganatra is an industry leader in cosmetic smiles and advanced dental implants, highly respected for bringing world-class European protocols and aesthetic design to Bandra. He is dedicated to rendering pain-free, artistic dental care.',
+    image: IMAGES.drMale,
+    timing: '10:00 AM - 1:30 PM, 5:00 PM - 8:30 PM',
+    days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+  },
+  {
+    id: 'dr_anjali_ganatra',
+    name: 'Dr. Anjali Ganatra',
+    title: 'Chief Pediatric & Orthodontic Specialist',
+    qualification: 'MDS (Pedodontics & Preventive Dentistry), BDS',
+    experience: '16+ Years of Clinical Excellence',
+    specialization: 'Invisalign Certified, Pediatric Dental Care, Sleep Dentistry, and Orthodontics.',
+    about: 'With a gentle, patient-first methodology, Dr. Anjali makes dental visits delightful for children and teenagers. She coordinates advanced non-extraction alignments, invisible aligners, and comprehensive preventive pediatric therapy.',
+    image: IMAGES.drFemale,
+    timing: '10:00 AM - 1:30 PM, 5:30 PM - 8:30 PM',
+    days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+  },
+];
+
+export const WHY_CHOOSE_US: WhyChooseUsCard[] = [
+  {
+    id: 'five_star',
+    title: '5-Star Rated Clinic',
+    description: 'Ranked Bandra’s top-rated clinic with 723+ independent verified 5-Star reviews.',
+    iconName: 'Award',
+  },
+  {
+    id: 'experience',
+    title: 'Experienced Dental Team',
+    description: 'Over two decades of experience diagnosing and treatment-planning premium smiles.',
+    iconName: 'UserCheck',
+  },
+  {
+    id: 'tech',
+    title: 'Advanced Technology',
+    description: 'Equipped with CAD/CAM scanners, electronic rotary root canals, and ultra-safe low-dose digital RVG X-Rays.',
+    iconName: 'Cpu',
+  },
+  {
+    id: 'painless',
+    title: 'Painless Treatments',
+    description: 'Using advanced micro-anesthesia, computerized techniques, and a sedation option to make care pain-free.',
+    iconName: 'Heart',
+  },
+  {
+    id: 'affordable',
+    title: 'Affordable Premium Care',
+    description: 'Transparent pricing with flexible payment plans and No-Cost EMI options for luxury implants.',
+    iconName: 'IndianRupee',
+  },
+  {
+    id: 'appointments',
+    title: 'Easy Appointments',
+    description: 'Double channels with smart booking confirmations via WhatsApp, automatic reminders, and low-wait times.',
+    iconName: 'CalendarRange',
+  },
+  {
+    id: 'location',
+    title: 'Central Bandra Location',
+    description: 'Convenient ground floor access on Hill Road, Bandra West, featuring private parking spaces.',
+    iconName: 'MapPin',
+  },
+  {
+    id: 'personalized',
+    title: 'Personalized Plans',
+    description: 'We do not rush. Every smile receives a patient-consenting blueprint tailored to unique biological needs.',
+    iconName: 'Smile',
+  },
+];
+
+export const REVIEWS: Review[] = [
+  {
+    id: 'rev1',
+    name: 'Priya Sharma',
+    location: 'Bandra, Mumbai',
+    rating: 5,
+    date: 'May 12, 2026',
+    text: 'Excellent experience. The doctors explained every procedure clearly and made me feel comfortable throughout the treatment. The implants were completely painless!',
+    avatarInitials: 'PS',
+    avatarBg: 'bg-indigo-600',
+    treatmentUsed: 'Dental Implants',
+    verified: true,
+  },
+  {
+    id: 'rev2',
+    name: 'Rohit Mehta',
+    location: 'Bandra West, Mumbai',
+    rating: 5,
+    date: 'May 20, 2026',
+    text: 'One of the best dental clinics in Mumbai. Professional staff, very clean facility, and beautiful design. Dr. Ganatra is an absolute perfectionist with veneers.',
+    avatarInitials: 'RM',
+    avatarBg: 'bg-emerald-600',
+    treatmentUsed: 'Smile Makeover',
+    verified: true,
+  },
+  {
+    id: 'rev3',
+    name: 'Sneha Patel',
+    location: 'Khar, Mumbai',
+    rating: 5,
+    date: 'April 28, 2026',
+    text: 'Highly recommended for dental implants and smile correction treatments. I did my clear aligners therapy here and my smile looks incredibly straight. Exceptional care!',
+    avatarInitials: 'SP',
+    avatarBg: 'bg-sky-600',
+    treatmentUsed: 'Invisible Aligners',
+    verified: true,
+  },
+  {
+    id: 'rev4',
+    name: 'Amit Shah',
+    location: 'Bandra West, Mumbai',
+    rating: 5,
+    date: 'June 01, 2026',
+    text: 'Very friendly doctors and painless treatment. Great experience for my 6-year-old child who was previously terrified of dentists. Pediatric care is wonderful here.',
+    avatarInitials: 'AS',
+    avatarBg: 'bg-amber-600',
+    treatmentUsed: 'Kids Dentistry',
+    verified: true,
+  },
+  {
+    id: 'rev5',
+    name: 'Karan Grover',
+    location: 'Santacruz, Mumbai',
+    rating: 5,
+    date: 'May 04, 2026',
+    text: 'Got an emergency single-visit wisdom teeth extraction done. It was fast, painless, and the recovery was so rapid. Many thanks to the friendly clinic doctors.',
+    avatarInitials: 'KG',
+    avatarBg: 'bg-rose-600',
+    treatmentUsed: 'Tooth Extraction',
+    verified: true,
+  },
+  {
+    id: 'rev6',
+    name: 'Anjali Deshmukh',
+    location: 'Bandra, Mumbai',
+    rating: 5,
+    date: 'May 18, 2026',
+    text: 'Root Canal treatment was completely silent and painless. The crowns fit perfectly - I can eat almonds without problems now. High hygiene standards.',
+    avatarInitials: 'AD',
+    avatarBg: 'bg-teal-600',
+    treatmentUsed: 'Root Canal & Dental Crowns',
+    verified: true,
+  }
+];
+
+export const GALLERY: GalleryItem[] = [
+  {
+    id: 'g1',
+    title: 'State-of-the-art Treatment Room',
+    category: 'equipment',
+    image: IMAGES.treatmentRoom,
+  },
+  {
+    id: 'g2',
+    title: 'Luxury Clinic Reception Desk',
+    category: 'clinic',
+    image: IMAGES.reception,
+  },
+  {
+    id: 'g3',
+    title: 'Modern Ergonomic Dental Chair',
+    category: 'equipment',
+    image: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 'g4',
+    title: 'Warm Consulting Area',
+    category: 'clinic',
+    image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 'g5',
+    title: 'Pediatric Dental Cabin',
+    category: 'clinic',
+    image: 'https://images.unsplash.com/photo-1596464716127-f2a82984de30?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 'g6',
+    title: 'Happy Patient Consultations',
+    category: 'consultation',
+    image: IMAGES.hero,
+  },
+];
+
+export const FAQS = [
+  {
+    q: 'How can I schedule an appointment with Dr. Ganatra?',
+    a: 'You can quickly book through our online Appointment Booking Section, write to us directly on WhatsApp (+91 98674 40803), or call us! We confirm all scheduled slots within minutes.',
+  },
+  {
+    q: 'Are your root canals and extractions really painless?',
+    a: 'Yes! We practice advanced local anesthesia techniques and computerized delivery processes that numb tissues quickly. Most patients feel only a light vibration, and pain is completely eliminated.',
+  },
+  {
+    q: 'What makes Invisible Aligners better than traditional metallic braces?',
+    a: 'Clear aligners are transparent, highly aesthetic, and completely removable, which makes brushing and eating dental-friendly. They align teeth smoothly and generally deliver results faster with fewer clinical visits.',
+  },
+  {
+    q: 'Where is Ganatras Dental Care located, and is parking available?',
+    a: 'We are situated in Bandra West on Hill Road (Ocean View CHS, 19, close to Mehboob Studio). We operate a ground-floor, wheel-chair accessible entry, and we have committed customer car parking slots.',
+  },
+];

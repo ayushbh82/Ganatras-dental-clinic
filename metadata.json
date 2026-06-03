@@ -1,0 +1,6 @@
+{
+  "name": "Ganatras Dental Care",
+  "description": "Premium and modern website for Ganatras Dental Care in Bandra West, Mumbai, featuring treatments, expert dentists, reviews, and appointment booking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
